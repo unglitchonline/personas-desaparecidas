@@ -14,7 +14,7 @@ PLOT_BGCOLOR = "#171010"
 PAPER_BHCOLOR = "#2B2B2B"
 
 # La fecha en la que los datos fueron recopilados.
-FECHA_FUENTE = "02/04/2025"
+FECHA_FUENTE = "03/04/2025"
 
 
 # Estos serán nuestros grupos etarios.

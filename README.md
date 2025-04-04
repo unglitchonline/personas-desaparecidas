@@ -1,6 +1,8 @@
 # Personas Desaparecidas y No Localizadas en México
 
-Este repositorio contiene scripts para analizar el Registro Nacional de Personas Desaparecidas y No Localizadas en México.
+Este repositorio contiene scripts para analizar el Registro Nacional de Personas Desaparecidas y No Localizadas de México.
+
+El Registro Nacional de Personas Desaparecidas y No Localizadas (RNPDNO) de México es una base de datos oficial administrada por la Comisión Nacional de Búsqueda (CNB), que concentra y actualiza información sobre personas desaparecidas en el país.
 
 El conjunto de datos incluido fue generado a partir de la información disponible en: [Consulta Pública del RNPDNO](https://consultapublicarnpdno.segob.gob.mx/consulta).
 
@@ -14,7 +16,7 @@ Antes de analizar estos datos, es importante tomar en cuenta los siguientes punt
 
 3. Los registros en este conjunto de datos corresponden únicamente a personas que **siguen desaparecidas o no localizadas**. Una vez que se confirma su localización, son eliminados del registro.
 
-4. Algunos registros contienen **información confidencial**. En estos casos, la estrategia aplicada es ignorar dichos campos.
+4. Algunos registros están marcados como **CONFIDENCIAL**. En estos casos, la estrategia aplicada es ignorar dichos campos.
 
 5. Se recomienda utilizar la variable **FECHA_DESAPARICION** en lugar de **FECHA_REGISTRO**. En los scripts se explica qué hacer cuando esta información no está disponible.
 
@@ -70,7 +72,9 @@ Esta información también puede presentarse en formato de tabla:
 
 ![Tabla tasa bruta](./imgs/tabla_tasa.png)
 
-Además, la misma tabla está disponible ordenada por cifras absolutas:
+La tabla anterior excluye municipios con poblaciones pequeñas, ya que estos pueden distorsionar las tasas.  
+
+En cambio, la siguiente tabla muestra los datos ordenados por número de casos, sin aplicar ningún filtro.
 
 ![Tabla absolutos](./imgs/tabla_absolutos.png)
 

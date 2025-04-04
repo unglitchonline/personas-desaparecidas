@@ -19,7 +19,7 @@ PLOT_COLOR = "#171010"
 PAPER_COLOR = "#2B2B2B"
 
 # La fecha en la que los datos fueron recopilados.
-FECHA_FUENTE = "02/04/2025"
+FECHA_FUENTE = "03/04/2025"
 
 # Este diccionario es utilizado por todas las funciones
 # para poder referenciar cada entidad con su clave numérica.
@@ -1127,5 +1127,5 @@ if __name__ == "__main__":
     homicidios_anuales(25)
     comparacion_mensual(25, 2024)
 
-    # crear_mapa(2024)
-    # comparacion_anual(2023, 2024)
+    crear_mapa(2024)
+    comparacion_anual(2023, 2024)
