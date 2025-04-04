@@ -170,7 +170,6 @@ def tasa_edad(año):
         title_font_size=20,
         ticks="outside",
         separatethousands=True,
-        tickfont_size=14,
         ticklen=10,
         title_standoff=15,
         tickcolor="#FFFFFF",
