@@ -19,7 +19,7 @@ PLOT_COLOR = "#171010"
 PAPER_COLOR = "#2B2B2B"
 
 # La fecha en la que los datos fueron recopilados.
-FECHA_FUENTE = "03/04/2025"
+FECHA_FUENTE = "01/05/2025"
 
 # Este diccionario es utilizado por todas las funciones
 # para poder referenciar cada entidad con su clave numérica.
@@ -27,7 +27,7 @@ ENTIDADES = {
     0: "México",
     1: "Aguascalientes",
     2: "Baja California",
-    3: "Baja California sur",
+    3: "Baja California Sur",
     4: "Campeche",
     5: "Coahuila",
     6: "Colima",
@@ -184,7 +184,7 @@ def desaparecidos_anuales(entidad_id, xanchor="left"):
 
     fig.update_yaxes(
         title="Tasa bruta por cada 100,000 habitantes",
-        range=[0, df["tasa"].max() * 1.11],
+        range=[0, df["tasa"].max() * 1.1],
         ticks="outside",
         separatethousands=True,
         ticklen=10,
@@ -290,16 +290,16 @@ def homicidios_anuales(entidad_id, xanchor="left"):
 
     # Cargamos el dataset de víctimas (SESNSP).
     df = pd.read_csv(
-        "./assets/timeseries_victimas.csv", parse_dates=["isodate"], index_col=0
+        "./assets/timeseries_victimas.csv", parse_dates=["PERIODO"], index_col=0
     )
 
     # Filtramos por entidad. Si entidad_es 0, no hacemos filtro.
     if entidad_id != 0:
-        df = df[df["entidad"] == ENTIDADES[entidad_id]]
+        df = df[df["ENTIDAD"] == ENTIDADES[entidad_id]]
 
     # Seleccionamos homicidios dolosos y feminicidios.
     # Esto es con el efecto de seleccionar todas las muertes violentas.
-    df = df[df["delito"].isin(["Homicidio doloso", "Feminicidio"])]
+    df = df[df["DELITO"].isin(["Homicidio doloso", "Feminicidio"])]
 
     # Calculamos el total de víctimas por año.
     df = df.resample("YS").sum(numeric_only=True)
@@ -311,11 +311,11 @@ def homicidios_anuales(entidad_id, xanchor="left"):
     df["pop"] = pop
 
     # Calculamos la tasa por cada 100,000 habitantes.
-    df["tasa"] = df["total"] / df["pop"] * 100000
+    df["tasa"] = df["TOTAL"] / df["pop"] * 100000
 
     # Preparamos el texto para cada observación dentro de la gráfica.
     df["texto"] = df.apply(
-        lambda x: f"<b>{x['tasa']:,.2f}</b><br>({x['total']:,.0f})", axis=1
+        lambda x: f"<b>{x['tasa']:,.2f}</b><br>({x['TOTAL']:,.0f})", axis=1
     )
 
     fig = go.Figure()
@@ -325,7 +325,7 @@ def homicidios_anuales(entidad_id, xanchor="left"):
             x=df.index,
             y=df["tasa"],
             text=df["texto"],
-            name=f"Total acumulado: <b>{df['total'].sum():,.0f}</b>",
+            name=f"Total acumulado: <b>{df['TOTAL'].sum():,.0f}</b>",
             textposition="outside",
             marker_color=df["tasa"],
             marker_colorscale="redor",
@@ -349,7 +349,7 @@ def homicidios_anuales(entidad_id, xanchor="left"):
 
     fig.update_yaxes(
         title="Tasa bruta por cada 100,000 habitantes",
-        range=[0, df["tasa"].max() * 1.12],
+        range=[0, df["tasa"].max() * 1.15],
         ticks="outside",
         separatethousands=True,
         ticklen=10,
@@ -442,24 +442,24 @@ def comparacion_mensual(entidad_id, año, xanchor="left"):
 
     # Cargamos el dataset de víctimas (SESNSP).
     homicidios = pd.read_csv(
-        "./assets/timeseries_victimas.csv", parse_dates=["isodate"], index_col=0
+        "./assets/timeseries_victimas.csv", parse_dates=["PERIODO"], index_col=0
     )
 
     # Filtramos por entidad. Si entidad_es 0, no hacemos filtro.
     if entidad_id != 0:
-        homicidios = homicidios[homicidios["entidad"] == ENTIDADES[entidad_id]]
+        homicidios = homicidios[homicidios["ENTIDAD"] == ENTIDADES[entidad_id]]
 
     # Seleccionamos homicidios dolosos y feminicidios.
     # Esto es con el efecto de seleccionar todas las muertes violentas.
     homicidios = homicidios[
-        homicidios["delito"].isin(["Homicidio doloso", "Feminicidio"])
+        homicidios["DELITO"].isin(["Homicidio doloso", "Feminicidio"])
     ]
 
     # Seleccionamos los registros del año de nuestro interés.
     homicidios = homicidios[homicidios.index.year == año]
 
     # Calculamos el total de víctimas por mes.
-    homicidios = homicidios.resample("MS").sum(numeric_only=True)["total"]
+    homicidios = homicidios.resample("MS").sum(numeric_only=True)["TOTAL"]
 
     # Cargamos el dataset de personas desaparecidas.
     desaparecidos = pd.read_csv("./data.csv")
@@ -709,7 +709,7 @@ def crear_mapa(año):
             etiquetas.append(f"{item:,.1f}")
 
     # A la última etiqueta le agregamos el símbolo de 'mayor o igual que'.
-    etiquetas[-1] = f"≥{valor_max:,.0f}"
+    etiquetas[-1] = f"≥{etiquetas[-1]}"
 
     # Cargamos el GeoJSON de México.
     geojson = json.load(open("./assets/mexico.json", "r", encoding="utf-8"))
@@ -739,7 +739,6 @@ def crear_mapa(año):
                 tickwidth=3,
                 tickcolor="#FFFFFF",
                 ticklen=10,
-                tickfont_size=20,
             ),
         )
     )
@@ -910,7 +909,7 @@ def crear_mapa(año):
         annotations=[
             dict(
                 x=0.5,
-                y=0.025,
+                y=0.03,
                 xanchor="center",
                 yanchor="top",
                 text="*El total está conformado por hombres, mujeres y víctimas con sexo no determinado.",
@@ -997,8 +996,8 @@ def comparacion_anual(primer_año, segundo_año):
     df["cambio"] = (df[segundo_año] - df[primer_año]) / df[primer_año] * 100
 
     # Preparamos el texto para cada observación.
-    df["text"] = df.apply(
-        lambda x: f" <b>{x['cambio']:,.2f}%</b> ({x[primer_año]:,.0f} → {x[segundo_año]:,.0f}) ",
+    df["texto"] = df.apply(
+        lambda x: f" <b>{x['cambio']:,.1f}%</b> ({x[primer_año]:,.0f} → {x[segundo_año]:,.0f}) ",
         axis=1,
     )
 
@@ -1011,7 +1010,7 @@ def comparacion_anual(primer_año, segundo_año):
 
     # Determinamos la posición de los textos para cada barra.
     df["ratio"] = df["cambio"].abs() / valor_max
-    df["text_pos"] = df["ratio"].apply(lambda x: "inside" if x >= 0.7 else "outside")
+    df["texto_pos"] = df["ratio"].apply(lambda x: "inside" if x >= 0.7 else "outside")
 
     fig = go.Figure()
 
@@ -1019,8 +1018,8 @@ def comparacion_anual(primer_año, segundo_año):
         go.Bar(
             y=df.index,
             x=df["cambio"],
-            text=df["text"],
-            textposition=df["text_pos"],
+            text=df["texto"],
+            textposition=df["texto_pos"],
             textfont_color="#FFFFFF",
             orientation="h",
             marker_color=df["cambio"],

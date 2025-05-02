@@ -10,11 +10,11 @@ import plotly.graph_objects as go
 
 # Todas las gráficas de este script
 # van a compartir el mismo esquema de colores.
-PLOT_BGCOLOR = "#171010"
-PAPER_BHCOLOR = "#2B2B2B"
+PLOT_COLOR = "#171010"
+PAPER_COLOR = "#2B2B2B"
 
 # La fecha en la que los datos fueron recopilados.
-FECHA_FUENTE = "03/04/2025"
+FECHA_FUENTE = "01/05/2025"
 
 
 # Estos serán nuestros grupos etarios.
@@ -204,8 +204,8 @@ def tasa_edad(año):
         margin_b=120,
         margin_l=130,
         title_font_size=36,
-        plot_bgcolor=PLOT_BGCOLOR,
-        paper_bgcolor=PAPER_BHCOLOR,
+        plot_bgcolor=PLOT_COLOR,
+        paper_bgcolor=PAPER_COLOR,
         annotations=[
             dict(
                 x=0.01,
