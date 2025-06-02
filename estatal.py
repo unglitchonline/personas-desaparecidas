@@ -19,7 +19,7 @@ PLOT_COLOR = "#171010"
 PAPER_COLOR = "#2B2B2B"
 
 # La fecha en la que los datos fueron recopilados.
-FECHA_FUENTE = "01/05/2025"
+FECHA_FUENTE = "01/06/2025"
 
 # Este diccionario es utilizado por todas las funciones
 # para poder referenciar cada entidad con su clave numérica.
@@ -177,7 +177,7 @@ def desaparecidos_anuales(entidad_id, xanchor="left"):
         linewidth=2,
         showline=True,
         showgrid=True,
-        gridwidth=0.35,
+        gridwidth=0.5,
         mirror=True,
         nticks=len(df) + 1,
     )
@@ -191,7 +191,7 @@ def desaparecidos_anuales(entidad_id, xanchor="left"):
         title_standoff=15,
         tickcolor="#FFFFFF",
         linewidth=2,
-        gridwidth=0.35,
+        gridwidth=0.5,
         showline=True,
         nticks=20,
         zeroline=False,
@@ -295,7 +295,7 @@ def homicidios_anuales(entidad_id, xanchor="left"):
 
     # Filtramos por entidad. Si entidad_es 0, no hacemos filtro.
     if entidad_id != 0:
-        df = df[df["ENTIDAD"] == ENTIDADES[entidad_id]]
+        df = df[df["CVE_ENT"] == entidad_id]
 
     # Seleccionamos homicidios dolosos y feminicidios.
     # Esto es con el efecto de seleccionar todas las muertes violentas.
@@ -342,7 +342,7 @@ def homicidios_anuales(entidad_id, xanchor="left"):
         linewidth=2,
         showline=True,
         showgrid=True,
-        gridwidth=0.35,
+        gridwidth=0.5,
         mirror=True,
         nticks=len(df) + 1,
     )
@@ -356,7 +356,7 @@ def homicidios_anuales(entidad_id, xanchor="left"):
         title_standoff=15,
         tickcolor="#FFFFFF",
         linewidth=2,
-        gridwidth=0.35,
+        gridwidth=0.5,
         showline=True,
         nticks=20,
         zeroline=False,
@@ -447,7 +447,7 @@ def comparacion_mensual(entidad_id, año, xanchor="left"):
 
     # Filtramos por entidad. Si entidad_es 0, no hacemos filtro.
     if entidad_id != 0:
-        homicidios = homicidios[homicidios["ENTIDAD"] == ENTIDADES[entidad_id]]
+        homicidios = homicidios[homicidios["CVE_ENT"] == entidad_id]
 
     # Seleccionamos homicidios dolosos y feminicidios.
     # Esto es con el efecto de seleccionar todas las muertes violentas.
@@ -538,7 +538,7 @@ def comparacion_mensual(entidad_id, año, xanchor="left"):
         linewidth=2,
         showline=True,
         showgrid=True,
-        gridwidth=0.35,
+        gridwidth=0.5,
         mirror=True,
         nticks=21,
     )
@@ -552,7 +552,7 @@ def comparacion_mensual(entidad_id, año, xanchor="left"):
         title_standoff=15,
         tickcolor="#FFFFFF",
         linewidth=2,
-        gridwidth=0.35,
+        gridwidth=0.5,
         showline=True,
         nticks=20,
         zeroline=False,
@@ -568,7 +568,6 @@ def comparacion_mensual(entidad_id, año, xanchor="left"):
         legend_y=0.98,
         legend_xanchor=xanchor,
         legend_yanchor="top",
-        legend_font_size=16,
         width=1920,
         height=1080,
         font_family="Montserrat",
@@ -1023,7 +1022,7 @@ def comparacion_anual(primer_año, segundo_año):
             textfont_color="#FFFFFF",
             orientation="h",
             marker_color=df["cambio"],
-            marker_colorscale="spectral_r",
+            marker_colorscale="geyser",
             marker_cmid=0,
             marker_line_width=0,
             textfont_size=30,
@@ -1039,7 +1038,7 @@ def comparacion_anual(primer_año, segundo_año):
         tickcolor="#FFFFFF",
         linewidth=2,
         showline=True,
-        gridwidth=0.35,
+        gridwidth=0.5,
         mirror=True,
         nticks=20,
     )
@@ -1051,7 +1050,7 @@ def comparacion_anual(primer_año, segundo_año):
         ticklen=10,
         tickcolor="#FFFFFF",
         linewidth=2,
-        gridwidth=0.35,
+        gridwidth=0.5,
         showline=True,
         mirror=True,
     )
@@ -1122,7 +1121,7 @@ def comparacion_anual(primer_año, segundo_año):
 
 
 if __name__ == "__main__":
-    desaparecidos_anuales(25)
+    desaparecidos_anuales(29)
     homicidios_anuales(25)
     comparacion_mensual(25, 2024)
 
