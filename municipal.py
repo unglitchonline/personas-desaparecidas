@@ -16,7 +16,7 @@ PLOT_COLOR = "#171010"
 PAPER_COLOR = "#2B2B2B"
 
 # La fecha en la que los datos fueron recopilados.
-FECHA_FUENTE = "01/06/2025"
+FECHA_FUENTE = "01/07/2025"
 
 
 def crear_mapa(año):
