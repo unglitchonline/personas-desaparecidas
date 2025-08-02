@@ -46,7 +46,11 @@ Y también a nivel estatal:
 
 Si bien las desapariciones y los homicidios no siempre están directamente relacionados, en algunos casos las tendencias sugieren una fuerte correlación. Un ejemplo ilustrativo es el estado de Sinaloa:
 
-![Mensual Sinaloa](./imgs/mensual_25_2024.png)
+![Mensual Sinaloa 2024](./imgs/mensual_25_2024.png)
+
+Durante los años 2024 y 2025 se puede observar el aumento de violencia en la entidad.
+
+![Mensual Sinaloa 2025](./imgs/mensual_25_2025.png)
 
 Los datos de homicidios provienen del **SESNSP (víctimas)**: [Datos abiertos de incidencia delictiva](https://www.gob.mx/sesnsp/acciones-y-programas/datos-abiertos-de-incidencia-delictiva).
 

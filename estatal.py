@@ -19,7 +19,7 @@ PLOT_COLOR = "#171010"
 PAPER_COLOR = "#2B2B2B"
 
 # La fecha en la que los datos fueron recopilados.
-FECHA_FUENTE = "01/07/2025"
+FECHA_FUENTE = "01/08/2025"
 
 # Este diccionario es utilizado por todas las funciones
 # para poder referenciar cada entidad con su clave numérica.
@@ -1065,7 +1065,7 @@ def comparacion_anual(primer_año, segundo_año):
         title_text=f"Comparación de la incidencia de personas desaparecidas en México ({primer_año} vs. {segundo_año})",
         title_x=0.5,
         title_y=0.98,
-        margin_t=80,
+        margin_t=805,
         margin_r=40,
         margin_b=120,
         margin_l=280,
@@ -1121,9 +1121,13 @@ def comparacion_anual(primer_año, segundo_año):
 
 
 if __name__ == "__main__":
-    desaparecidos_anuales(25)    
-    homicidios_anuales(25)
+    desaparecidos_anuales(0)
+    desaparecidos_anuales(25)
+
+    # homicidios_anuales(0)
+
     comparacion_mensual(25, 2024)
+    comparacion_mensual(25, 2025)
 
     crear_mapa(2024)
     comparacion_anual(2023, 2024)
