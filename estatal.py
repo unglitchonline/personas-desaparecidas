@@ -996,7 +996,9 @@ def comparacion_anual(primer_año, segundo_año):
 
     # Preparamos el texto para cada observación.
     df["texto"] = df.apply(
-        lambda x: f" <b>{x['cambio']:,.1f}%</b> ({x[primer_año]:,.0f} → {x[segundo_año]:,.0f}) ",
+        lambda x: f" <b>{x['cambio']:,.0f}%</b> ({x[primer_año]:,.0f} → {x[segundo_año]:,.0f}) "
+        if abs(x["cambio"]) >= 100
+        else f" <b>{x['cambio']:,.1f}%</b> ({x[primer_año]:,.0f} → {x[segundo_año]:,.0f}) ",
         axis=1,
     )
 
