@@ -19,7 +19,7 @@ PLOT_COLOR = "#171010"
 PAPER_COLOR = "#2B2B2B"
 
 # La fecha en la que los datos fueron recopilados.
-FECHA_FUENTE = "01/08/2025"
+FECHA_FUENTE = "01/09/2025"
 
 # Este diccionario es utilizado por todas las funciones
 # para poder referenciar cada entidad con su clave numérica.
@@ -573,7 +573,7 @@ def comparacion_mensual(entidad_id, año, xanchor="left"):
         font_family="Montserrat",
         font_color="#FFFFFF",
         font_size=24,
-        title_text=f"Personas desaparecidas y homicidios dolosos en <b>{ENTIDADES[entidad_id]}</b> durante el {año}",
+        title_text=f"Personas desaparecidas y homicidios dolosos en <b>{ENTIDADES[entidad_id]}</b> durante {año}",
         title_x=0.5,
         title_y=0.965,
         margin_t=80,
@@ -772,7 +772,7 @@ def crear_mapa(año):
                 y=1.025,
                 xanchor="center",
                 yanchor="top",
-                text=f"Incidencia de personas desaparecidas y no localizadas en México durante el {año}",
+                text=f"Incidencia de personas desaparecidas y no localizadas en México durante {año}",
                 font_size=42,
             ),
             dict(
@@ -940,7 +940,7 @@ def crear_mapa(año):
     os.remove("./2.png")
 
 
-def comparacion_anual(primer_año, segundo_año):
+def comparacion_interanual(primer_año, segundo_año):
     """
     Crea una gráfica de barras horizontal mostrando el cambio
     porcentual de personas desaparecidas para cada entidad en México.
@@ -1132,4 +1132,4 @@ if __name__ == "__main__":
     comparacion_mensual(25, 2025)
 
     crear_mapa(2024)
-    comparacion_anual(2023, 2024)
+    comparacion_interanual(2023, 2024)

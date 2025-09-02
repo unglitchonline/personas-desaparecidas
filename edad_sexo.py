@@ -14,7 +14,7 @@ PLOT_COLOR = "#171010"
 PAPER_COLOR = "#2B2B2B"
 
 # La fecha en la que los datos fueron recopilados.
-FECHA_FUENTE = "01/08/2025"
+FECHA_FUENTE = "01/09/2025"
 
 
 # Estos serán nuestros grupos etarios.
@@ -196,7 +196,7 @@ def tasa_edad(año):
         font_family="Montserrat",
         font_color="#FFFFFF",
         font_size=24,
-        title_text=f"Incidencia de personas desaparecidas y no localizadas en México según edad y sexo ({año})",
+        title_text=f"Tasas de incidencia de personas desaparecidas en México durante {año} según edad y sexo",
         title_x=0.5,
         title_y=0.965,
         margin_t=80,
