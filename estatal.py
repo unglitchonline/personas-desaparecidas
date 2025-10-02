@@ -19,7 +19,7 @@ PLOT_COLOR = "#171010"
 PAPER_COLOR = "#2B2B2B"
 
 # La fecha en la que los datos fueron recopilados.
-FECHA_FUENTE = "01/09/2025"
+FECHA_FUENTE = "01/10/2025"
 
 # Este diccionario es utilizado por todas las funciones
 # para poder referenciar cada entidad con su clave numérica.
@@ -1083,7 +1083,7 @@ def comparacion_interanual(primer_año, segundo_año):
                 xanchor="right",
                 yanchor="bottom",
                 align="left",
-                bgcolor="#323232",
+                bgcolor=PLOT_COLOR,
                 bordercolor="#FFFFFF",
                 borderwidth=1.5,
                 borderpad=7,
